@@ -3,6 +3,7 @@ package com.gszcn.security.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.gszcn.security.entity.Users;
 import com.gszcn.security.mapper.UsersMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -21,6 +22,7 @@ import java.util.List;
  * @since 2020/11/30 下午2:29
  */
 @Service
+@Slf4j
 public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UsersMapper usersMapper;
@@ -34,9 +36,11 @@ public class MyUserDetailsService implements UserDetailsService {
         if(users == null) {
             throw new UsernameNotFoundException("用户名不存在！");
         }
-        System.out.println(users);
+        log.info(String.valueOf(users));
+        // 权限、角色列表
         List<GrantedAuthority> auths =
-                AuthorityUtils.commaSeparatedStringToAuthorityList("role");
+                AuthorityUtils.commaSeparatedStringToAuthorityList("admins,manager,ROLE_admins,ROLE_role1");
+        // 给用户添加一个权限
         return new User(users.getUsername(),
                 new BCryptPasswordEncoder().encode(users.getPassword()),auths);
     }

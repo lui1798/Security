@@ -41,6 +41,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests()
                     // 放行路径
                     .antMatchers("/","/user/login","/test/hello").permitAll()
+                    // 权限。
+                    // 登录用户具有admins权限才能访问，单个权限：hasAuthority("admins") 多个权限：hasAnyAuthority("admins,manager")
+                    //.antMatchers("/test/index").hasAnyAuthority("admins")
+                    // 角色。
+                    // 登录用户拥有，单个角色hasRole("sale");多个角色hasAnyRole("sale,role1")
+                    .antMatchers("/test/index").hasAnyRole("sale,role1")
+
                 .anyRequest().authenticated()
                 // 关闭csrf防护
                 .and().csrf().disable();
