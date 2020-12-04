@@ -16,17 +16,15 @@ public class DemoController {
 
     @GetMapping("hello")
     @ResponseBody
-    public String getUserInfo(String a) throws Exception {
-        String b= a+"你好！";
-        log.info(b);
+    public String getUserInfo() {
+        String b= "你好！";
         return b;
     }
 
-    @PostMapping("helloPost")
+    @GetMapping("index")
     @ResponseBody
-    public String helloPost(String name) throws Exception {
-        String b= name+"你好！这是post请求！";
-        log.info(b);
+    public String helloPost() {
+        String b= "成功登录之后跳转来到这个页面！";
         return b;
     }
 
