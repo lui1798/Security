@@ -31,26 +31,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 自定义自己的登录页面
-        http.exceptionHandling().accessDeniedPage("/unauth.html").and()
-                .formLogin()
+        http.formLogin()
                 // 登录页面设置
                 .loginPage("/login.html")
                 // 登录访问路径
-                .loginProcessingUrl("/user/login")
-                // 登录成功之后的跳转路径
-                .defaultSuccessUrl("/test/index").permitAll()
-                .and().authorizeRequests()
+                .loginProcessingUrl("/users/login")
+                // 登录成功之后的跳转路径.defaultSuccessUrl("/test/index").permitAll()
+                .defaultSuccessUrl("/loginSuccess.html").permitAll()
+                .and()
+                    // 登出配置
+                    .logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccess.html").permitAll()
+                .and()
+                    .authorizeRequests()
                     // 放行路径
-                    .antMatchers("/","/user/login","/test/hello").permitAll()
+                    .antMatchers("/","/user/login","/test/hello","/users/**","/register.html").permitAll()
                     // 权限。
                     // 登录用户具有admins权限才能访问，单个权限：hasAuthority("admins") 多个权限：hasAnyAuthority("admins,manager")
                     //.antMatchers("/test/index").hasAnyAuthority("admins")
                     // 角色。
                     // 登录用户拥有，单个角色hasRole("sale");多个角色hasAnyRole("sale,role1")
-                    .antMatchers("/test/index").hasAnyRole("sale,role")
+                    .antMatchers("/test/index").hasAnyRole("sale,role").anyRequest().authenticated()
+                .and()
+                    // 403没有权限页面配置
+                    .exceptionHandling().accessDeniedPage("/unauth.html")
 
-                .anyRequest().authenticated()
-                // 关闭csrf防护
-                .and().csrf().disable();
+                .and()
+                    // 关闭csrf防护
+                    .csrf().disable();
     }
 }

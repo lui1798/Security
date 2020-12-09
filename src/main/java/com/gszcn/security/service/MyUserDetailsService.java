@@ -42,6 +42,8 @@ public class MyUserDetailsService implements UserDetailsService {
                 AuthorityUtils.commaSeparatedStringToAuthorityList("admins,manager,ROLE_sale,ROLE_role");
         // 给用户添加一个权限
         return new User(users.getUsername(),
-                new BCryptPasswordEncoder().encode(users.getPassword()),auths);
+//                new BCryptPasswordEncoder().encode(users.getPassword())
+                users.getPassword()
+                ,auths);
     }
 }
