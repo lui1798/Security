@@ -31,7 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 自定义自己的登录页面
-        http.formLogin()
+        http.exceptionHandling().accessDeniedPage("/unauth.html").and()
+                .formLogin()
                 // 登录页面设置
                 .loginPage("/login.html")
                 // 登录访问路径
@@ -46,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     //.antMatchers("/test/index").hasAnyAuthority("admins")
                     // 角色。
                     // 登录用户拥有，单个角色hasRole("sale");多个角色hasAnyRole("sale,role1")
-                    .antMatchers("/test/index").hasAnyRole("sale,role1")
+                    .antMatchers("/test/index").hasAnyRole("sale,role")
 
                 .anyRequest().authenticated()
                 // 关闭csrf防护

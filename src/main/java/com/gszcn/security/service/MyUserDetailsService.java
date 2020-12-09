@@ -39,7 +39,7 @@ public class MyUserDetailsService implements UserDetailsService {
         log.info(String.valueOf(users));
         // 权限、角色列表
         List<GrantedAuthority> auths =
-                AuthorityUtils.commaSeparatedStringToAuthorityList("admins,manager,ROLE_admins,ROLE_role1");
+                AuthorityUtils.commaSeparatedStringToAuthorityList("admins,manager,ROLE_sale,ROLE_role");
         // 给用户添加一个权限
         return new User(users.getUsername(),
                 new BCryptPasswordEncoder().encode(users.getPassword()),auths);
