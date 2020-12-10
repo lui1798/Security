@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.gszcn</groupId>
-    <artifactId>zwfw</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
-    <name>zwfw</name>
-    <description>测试政务服务</description>
+    <artifactId>SecurityDome</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>SecurityDome</name>
+    <description>SpringSecurityDome</description>
 
     <properties>
         <java.version>1.8</java.version>

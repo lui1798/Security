@@ -88,7 +88,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedPage("/unauth.html")
             .and()
                 //记住我
-                .rememberMe().tokenRepository(persistentTokenRepository()).tokenValiditySeconds(60).userDetailsService(myUserDetailsService)
+                .rememberMe().tokenRepository(persistentTokenRepository()).tokenValiditySeconds(60*60*24*7).userDetailsService(myUserDetailsService)
             .and()
                 // 关闭csrf防护
                 .csrf().disable();
