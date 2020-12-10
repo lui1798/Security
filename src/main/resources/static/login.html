@@ -17,6 +17,7 @@
         <img id="verImg" src="/public/verification/getCode" width="130px" height="48px"/>
     </form>
     <button type="button" id="submitLogin">登录</button>
+<input name="remember-me" type="checkbox" value="true" id="remember-me"/>记住我</td><br/>
     <a href="/register.html">去注册</a>
 </body>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
@@ -32,13 +33,13 @@ $("#submitLogin").click(function() {
     data.username=$("#username").val();
     data.password=$("#password").val();
     data.code = $("#code").val();
+    data["remember-me"] = $("#remember-me").val();
     data.type = "JSON";
     $.ajax({
         type:"POST",
         url:"/users/login",
         data:data,
         success:function(data){
-            debugger
             if(data.code==200){
                 // $("searchResult").html(data.msg);
                 location.href=data.data.targetUrl;

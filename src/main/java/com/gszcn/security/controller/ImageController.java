@@ -31,6 +31,7 @@ public class ImageController {
     @GetMapping("/getCode")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ImageCode imageCode = imageCode(request, response);
+
         // TODO 第一次验证码没有存进缓存（验验证码不存在）输入session中
         request.getSession().setAttribute("imagecodekey",imageCode );
     }
@@ -59,8 +60,8 @@ public class ImageController {
          * 验证码放入缓存
          */
         String text = gifCaptcha.text().toLowerCase();
-
-
+        // 在getOutputStream之前创建session，不然找不到Session ID，报错
+        request.getSession();
         // 输出图片流
         gifCaptcha.out(response.getOutputStream());
 

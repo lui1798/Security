@@ -1,8 +1,7 @@
 package com.gszcn.security.controller;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.gszcn.security.entity.Users;
-import com.gszcn.security.service.UsersService;
+import com.gszcn.security.service.MyUserDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class UserController {
     @Autowired
-    UsersService usersService;
+    MyUserDetailsService myUserDetailsService;
     @PostMapping("register")
     public String register(@RequestBody Users users){
-        Integer register = usersService.register(users);
+        Integer register = myUserDetailsService.register(users);
         if (register>0){
             return "注册成功！";
         }
@@ -33,7 +32,7 @@ public class UserController {
     @PostMapping("changePassword")
     public String changePassword(String oldPassword, String password){
         try{
-            usersService.changePassword(oldPassword,password);
+            myUserDetailsService.changePassword(oldPassword,password);
             return "修改成功";
         } catch (Exception e){
             e.printStackTrace();
