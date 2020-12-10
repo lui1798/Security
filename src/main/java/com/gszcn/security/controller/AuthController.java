@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("test")
 @Slf4j
-public class DemoController {
+public class AuthController {
 
 
     @GetMapping("hello")
