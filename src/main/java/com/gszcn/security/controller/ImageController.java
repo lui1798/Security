@@ -31,8 +31,6 @@ public class ImageController {
     @GetMapping("/getCode")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ImageCode imageCode = imageCode(request, response);
-
-        // TODO 第一次验证码没有存进缓存（验验证码不存在）输入session中
         request.getSession().setAttribute("imagecodekey",imageCode );
     }
 
