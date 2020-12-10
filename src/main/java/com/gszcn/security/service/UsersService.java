@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
  * @since 2020/12/9 上午11:13
  */
 @Service
-public class UsersService implements UserDetailsService {
+public class UsersService {
 
     @Autowired
     private UsersMapper usersMapper;
@@ -61,13 +61,13 @@ public class UsersService implements UserDetailsService {
         }
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        QueryWrapper<Users> queryWrapper = new QueryWrapper<>();
-        Users users1 = new Users();
-        users1.setUsername(username);
-        queryWrapper.setEntity(users1);
-        Users users = usersMapper.selectOne(queryWrapper);
-        return users;
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        QueryWrapper<Users> queryWrapper = new QueryWrapper<>();
+//        Users users1 = new Users();
+//        users1.setUsername(username);
+//        queryWrapper.setEntity(users1);
+//        Users users = usersMapper.selectOne(queryWrapper);
+//        return users;
+//    }
 }

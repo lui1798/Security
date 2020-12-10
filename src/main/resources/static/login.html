@@ -6,13 +6,48 @@
 </head>
 <body>
 <h1>登录</h1>
-    <form action="/users/login" method="post">
-        用户名：<input type="text" name="username" />
+    <form action="/users/login" method="post" >
+        用户名：<input type="text" name="username" id="username"/>
         <br/>
-        密 码：<input type="password" name="password" />
+        密 码：<input type="password" name="password" id="password"/>
         <br/>
-        <input type="submit" value="login" />
+        验证码：<input type="text" name="code" id="code"/>
+        <br/>
+<!--        <input type="submit" value="login" />-->
+        <img id="verImg" src="/public/verification/getCode" width="130px" height="48px"/>
     </form>
+    <button type="button" id="submitLogin">登录</button>
     <a href="/register.html">去注册</a>
 </body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(function () {
+    $("#verImg").click(function () {
+        const src = $(this).attr("src");
+        $(this).attr("src",src + "?t=" + new Date().getTime())
+    })
+})
+$("#submitLogin").click(function() {
+    var data = {}
+    data.username=$("#username").val();
+    data.password=$("#password").val();
+    data.code = $("#code").val();
+    data.type = "JSON";
+    $.ajax({
+        type:"POST",
+        url:"/users/login",
+        data:data,
+        success:function(data){
+            debugger
+            if(data.code==200){
+                // $("searchResult").html(data.msg);
+                location.href=data.data.targetUrl;
+            }else{
+                alert(data.msg)
+
+            }
+        },
+    });
+});
+</script>
 </html>

@@ -32,6 +32,10 @@ public class DemoController {
         return b;
     }
 
+    /**
+     * 这个退出登录没啥用
+     * @return
+     */
     @GetMapping("logout")
     public String logout() {
         String b= "退出成功！";
