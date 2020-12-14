@@ -75,6 +75,7 @@ public class MyUserDetailsService implements UserDetailsService {
         users1.setUsername(userDetails.getUsername());
         queryWrapper.setEntity(users1);
         Users users = usersMapper.selectOne(queryWrapper);
+        // 密码对比
         if(!passwordEncoder.matches(oldPassword,users.getPassword())){
             throw new RuntimeException("原密码不正确");
         } else {
