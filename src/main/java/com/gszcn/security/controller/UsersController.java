@@ -2,12 +2,12 @@ package com.gszcn.security.controller;
 
 import com.gszcn.security.entity.Users;
 import com.gszcn.security.service.MyUserDetailsService;
+import com.gszcn.security.until.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author leiyunlong
@@ -21,22 +21,19 @@ public class UsersController {
     @Autowired
     MyUserDetailsService myUserDetailsService;
     @PostMapping("register")
-    public String register(@RequestBody Users users){
+    public R register(@RequestBody Users users){
         Integer register = myUserDetailsService.register(users);
         if (register>0){
-            return "注册成功！";
+            return R.ok().msg("注册成功");
         }
-        return "注册失败！";
+        return R.ok().msg("注册失败");
     }
 
     @PostMapping("changePassword")
-    public String changePassword(String oldPassword, String password){
-        try{
+    @ResponseBody
+    public R changePassword(String oldPassword, String password, HttpSession httpSession){
             myUserDetailsService.changePassword(oldPassword,password);
-            return "修改成功";
-        } catch (Exception e){
-            e.printStackTrace();
-            return e.getMessage();
-        }
+            httpSession.invalidate();
+            return R.ok().msg("修改密码成功");
     }
 }

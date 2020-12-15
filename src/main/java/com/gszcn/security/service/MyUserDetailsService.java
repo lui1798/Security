@@ -2,12 +2,14 @@ package com.gszcn.security.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.gszcn.security.entity.Users;
+import com.gszcn.security.exception.ServiceException;
 import com.gszcn.security.mapper.UsersMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -67,7 +69,8 @@ public class MyUserDetailsService implements UserDetailsService {
      * 修改密码
      */
     public void changePassword(String oldPassword, String password){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication = context.getAuthentication();
         UserDetails userDetails = (UserDetails)authentication.getPrincipal();
         String password1=passwordEncoder.encode(password);
         QueryWrapper<Users> queryWrapper = new QueryWrapper<>();
@@ -77,7 +80,7 @@ public class MyUserDetailsService implements UserDetailsService {
         Users users = usersMapper.selectOne(queryWrapper);
         // 密码对比
         if(!passwordEncoder.matches(oldPassword,users.getPassword())){
-            throw new RuntimeException("原密码不正确");
+            throw new ServiceException("201","原密码输入不正确！");
         } else {
             users.setPassword(password1);
             usersMapper.updateById(users);

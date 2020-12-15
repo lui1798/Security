@@ -44,10 +44,10 @@ public class UserAuthenticionSuccessHandler extends SavedRequestAwareAuthenticat
             targetUrl = savedRequest.getRedirectUrl();
             //上次访问路径是退出登录
             if(targetUrl.indexOf("logout")!=-1){
-                targetUrl = "/loginSuccess.html";
+                targetUrl = "/index.html";
             }
         } else {
-            targetUrl = "/loginSuccess.html";
+            targetUrl = "/index.html";
         }
         // 根据登录时type字段是JSON，给前端返回浏览器上次访问路径，否则就是走默认的
         String type = request.getParameter("type");

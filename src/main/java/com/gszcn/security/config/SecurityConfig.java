@@ -76,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .authorizeRequests()
                 // 放行路径
-                .antMatchers("/","/login.html","/user/login","/test/hello","/users/**","/public/**","/register.html").permitAll()
+                .antMatchers("/login.html","/user/login","/test/hello","/users/**","/public/**","/register.html").permitAll()
                 // 权限。
                 // 登录用户具有admins权限才能访问，单个权限：hasAuthority("admins") 多个权限：hasAnyAuthority("admins,manager")
 //                .antMatchers("/test/index").hasAnyAuthority("admins")
