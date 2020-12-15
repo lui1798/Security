@@ -7,8 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
-
 /**
  * @author leiyunlong
  * @version 1.0
@@ -20,6 +18,7 @@ import javax.servlet.http.HttpSession;
 public class UsersController {
     @Autowired
     MyUserDetailsService myUserDetailsService;
+
     @PostMapping("register")
     public R register(@RequestBody Users users){
         Integer register = myUserDetailsService.register(users);
@@ -31,9 +30,8 @@ public class UsersController {
 
     @PostMapping("changePassword")
     @ResponseBody
-    public R changePassword(String oldPassword, String password, HttpSession httpSession){
+    public R changePassword(String oldPassword, String password){
             myUserDetailsService.changePassword(oldPassword,password);
-            httpSession.invalidate();
             return R.ok().msg("修改密码成功");
     }
 }
