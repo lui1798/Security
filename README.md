@@ -1,11 +1,30 @@
 # Security
 SpringSecurity Dome
+## 初始SQL
+```sql
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+SET FOREIGN_KEY_CHECKS = 1;
+```
 ## 实现功能  
 - 注册
 - 登录
 - 修改密码
 - 登录验证码
 - 记住我
+ - 第一次使用需要打开代码中注释掉的创建"记住我表"的语句
 - CSRF
 - 退出登录
 - 权限模块 
