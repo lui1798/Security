@@ -12,8 +12,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping
 public class IndexController {
-    @GetMapping({"/"})
-    public String getUserInfo() {
-        return "redirect:/index.html";
-    }
+
 }

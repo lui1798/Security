@@ -26,12 +26,6 @@ import java.util.List;
 public class AuthController {
 
 
-    @GetMapping("hello")
-    public String getUserInfo() {
-        String b= "你好！";
-        return b;
-    }
-
     /**
      * 这个退出登录没啥用
      * @return

@@ -30,7 +30,7 @@ public class ImageController {
      */
     @GetMapping("/getCode")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ImageCode imageCode = imageCode(request, response);
+        ImageCode imageCode = this.imageCode(request, response);
         request.getSession().setAttribute("imagecodekey",imageCode );
     }
 
