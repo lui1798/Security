@@ -1,7 +1,7 @@
-package com.gszcn.security.mapper;
+package com.lei.security.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gszcn.security.entity.Users;
+import com.lei.security.entity.Users;
 import org.springframework.stereotype.Repository;
 
 /**

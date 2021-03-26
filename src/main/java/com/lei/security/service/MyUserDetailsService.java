@@ -1,9 +1,9 @@
-package com.gszcn.security.service;
+package com.lei.security.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.gszcn.security.entity.Users;
-import com.gszcn.security.exception.ServiceException;
-import com.gszcn.security.mapper.UsersMapper;
+import com.lei.security.entity.Users;
+import com.lei.security.exception.ServiceException;
+import com.lei.security.mapper.UsersMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -36,7 +36,7 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         // MP的查询方法
-        QueryWrapper<Users> wrapper = new QueryWrapper();
+        QueryWrapper<Users> wrapper = new QueryWrapper<>();
         // 相当于条件语句
         wrapper.eq("username",s);
         Users users = usersMapper.selectOne(wrapper);

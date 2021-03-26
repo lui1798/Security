@@ -1,7 +1,7 @@
-package com.gszcn.security.config;
+package com.lei.security.config;
 
-import com.gszcn.security.filter.ValidateFilter;
-import com.gszcn.security.service.MyUserDetailsService;
+import com.lei.security.filter.ValidateFilter;
+import com.lei.security.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

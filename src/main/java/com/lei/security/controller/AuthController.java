@@ -1,6 +1,6 @@
-package com.gszcn.security.controller;
+package com.lei.security.controller;
 
-import com.gszcn.security.entity.Users;
+import com.lei.security.entity.Users;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PostAuthorize;

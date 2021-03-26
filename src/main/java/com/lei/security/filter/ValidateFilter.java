@@ -1,8 +1,8 @@
-package com.gszcn.security.filter;
+package com.lei.security.filter;
 
-import com.gszcn.security.config.UserAuthenticionFailureHandler;
-import com.gszcn.security.entity.ImageCode;
-import com.gszcn.security.exception.CaptchaException;
+import com.lei.security.config.UserAuthenticionFailureHandler;
+import com.lei.security.entity.ImageCode;
+import com.lei.security.exception.CaptchaException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,8 +1,8 @@
-package com.gszcn.security.controller;
+package com.lei.security.controller;
 
-import com.gszcn.security.entity.Users;
-import com.gszcn.security.service.MyUserDetailsService;
-import com.gszcn.security.until.R;
+import com.lei.security.entity.Users;
+import com.lei.security.service.MyUserDetailsService;
+import com.lei.security.until.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

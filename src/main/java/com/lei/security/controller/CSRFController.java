@@ -1,4 +1,4 @@
-package com.gszcn.security.controller;
+package com.lei.security.controller;
 
 
 import org.springframework.stereotype.Controller;

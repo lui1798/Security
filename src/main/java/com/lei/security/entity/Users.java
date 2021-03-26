@@ -1,4 +1,4 @@
-package com.gszcn.security.entity;
+package com.lei.security.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

@@ -1,6 +1,6 @@
-package com.gszcn.security.exception;
+package com.lei.security.exception;
 
-import com.gszcn.security.until.R;
+import com.lei.security.until.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

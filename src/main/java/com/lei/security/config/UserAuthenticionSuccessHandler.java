@@ -1,7 +1,7 @@
-package com.gszcn.security.config;
+package com.lei.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gszcn.security.until.R;
+import com.lei.security.until.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

@@ -1,4 +1,4 @@
-package com.gszcn.security.exception;
+package com.lei.security.exception;
 
 
 public class ServiceException extends RuntimeException {

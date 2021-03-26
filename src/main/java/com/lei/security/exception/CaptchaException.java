@@ -1,4 +1,4 @@
-package com.gszcn.security.exception;
+package com.lei.security.exception;
 
 import lombok.Getter;
 import lombok.Setter;

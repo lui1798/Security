@@ -1,6 +1,6 @@
-package com.gszcn.security.controller;
+package com.lei.security.controller;
 
-import com.gszcn.security.entity.ImageCode;
+import com.lei.security.entity.ImageCode;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
 import com.wf.captcha.utils.CaptchaUtil;
