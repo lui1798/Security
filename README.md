@@ -1,5 +1,6 @@
 # Security
-SpringSecurity Dome
+**SpringSecurity Dome**    
+> 这是用springsecurity做的一个登录，MyUserDetailsService中写死了用户的权限，而在AuthController详细介绍了权限的使用规则
 ## 初始SQL
 ```sql
 SET NAMES utf8mb4;
@@ -31,9 +32,11 @@ SET FOREIGN_KEY_CHECKS = 1;
 ## 链接
 - 登录：http://127.0.0.1:9001/login.html
 - 无限权限页面 http://127.0.0.1:9001/test/hello
-## 用户名和密码 lei/123
+> 用户名和密码 lei/123
 ## csrf  
 用到CSRFController、csrf_token.html、csrfTest.html这几个文件，用来请求登录和获取csrf_token  
 还加入了thymeleaf-extras-springsecurity4、thymeleaf模版引擎。
 要测试CSRF是要记得打开pom文件中的thymeleaf
 - CSRF测试：http://127.0.0.1:9001/public/toupdate
+## 未完成事项
+ - [ ] remember-me的传参还有问题，应该是js的问题，已经写了TODO
